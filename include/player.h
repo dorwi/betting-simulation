@@ -6,8 +6,9 @@
 
 class Player {
 public:
-	void receive(int);
-	void bet(Betting_company);
+	Player(): balance(100) {}
+	void recieve(int);
+	void bet(Betting_company*);
 private:
 	int balance;
 };
