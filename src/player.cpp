@@ -19,6 +19,16 @@ void Player::bet(Betting_company* bc){
 	}
 }
 
+bool Player::participate(Betting_company* bc){
+	double amount = 0.5;
+	if (has(amount)){
+		bc->recieve(amount);
+		Legal_entity::pay(amount);
+		return true;
+	}
+	return false;
+}
+
 
 void Player::pay(Betting_company* betinc, double amount){
 	if (amount<0 || balance() - amount < 0){
@@ -27,6 +37,7 @@ void Player::pay(Betting_company* betinc, double amount){
 	Legal_entity::pay(amount);
 	betinc->recieve(amount);
 }
+
 
 string Player::name() const{
 	stringstream ss;
@@ -38,6 +49,18 @@ string Agressive_player::name() const{
 	stringstream ss;
 	ss << "Agressive Player " << id;
 	return ss.str(); 
+}
+
+string VIP_player::name() const{
+	stringstream ss;
+	ss << "VIP Player " << id;
+	return ss.str(); 	
+}
+
+string Agressive_VIP_player::name() const{
+	stringstream ss;
+	ss << "Agressive VIP Player " << id;
+	return ss.str(); 	
 }
 
 ostream& operator<<(ostream& os, const Player* p){

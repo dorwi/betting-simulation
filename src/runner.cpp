@@ -15,19 +15,19 @@ int main(){
 
 	vector<Player*> players;
 	for(int i=0; i<10; ++i){
-		Player* p = new Player(i);
-		players.push_back(p);
+		players.push_back(new Player(i));
 	}
 	for(int i=0; i<10; ++i){
-		Agressive_player* p = new Agressive_player(i);
-		players.push_back(p);
+		players.push_back(new Agressive_player(i));
 	}
+	for(int i=0; i<10; ++i){
+		players.push_back(new VIP_player(i));
+	}
+	for(int i=0; i<10; ++i){
+		players.push_back(new Agressive_VIP_player(i));
+	}
+
 	Betting_company betinc;
-
-
-	for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
-		(*it)->pay(&betinc, 1.0);
-	}
 
 	cout << betinc << endl;
 	for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
@@ -37,7 +37,9 @@ int main(){
 	cout << "------------------------------ Betting -----------------------------------" << endl;
 	for (int round =0; round<100; ++round){
 		for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
-			(*it)->bet(&betinc);
+			if ((*it)->participate(&betinc)){
+				(*it)->bet(&betinc);				
+			}
 		}
 		betinc.pay_out();
 		betinc.initialize();
