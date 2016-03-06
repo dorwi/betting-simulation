@@ -11,38 +11,46 @@ using std::cout; using std::endl;
 using std::vector;
 
 int main(){
-	cout << "---------------------- Initializing------------------------------" << endl;
+	cout << "---------------------------- Initializing------------------------------" << endl;
 
-	vector<Player> players;
+	vector<Player*> players;
 	for(int i=0; i<10; ++i){
-		Player p(i);
+		Player* p = new Player(i);
+		players.push_back(p);
+	}
+	for(int i=0; i<10; ++i){
+		Agressive_player* p = new Agressive_player(i);
 		players.push_back(p);
 	}
 	Betting_company betinc;
 
 
-	for (vector<Player>::iterator it = players.begin(); it!=players.end(); ++it){
-		it->pay(&betinc, 1.0);
+	for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
+		(*it)->pay(&betinc, 1.0);
 	}
 
 	cout << betinc << endl;
-	cout << players[0] << endl;
+	for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
+		cout << *it << endl;
+	}
 
-	cout << "---------------------- Betting -----------------------------------" << endl;
-	for (int round =0; round<30; ++round){
-		for (vector<Player>::iterator it = players.begin(); it!=players.end(); ++it){
-			it->bet(&betinc);
+	cout << "------------------------------ Betting -----------------------------------" << endl;
+	for (int round =0; round<100; ++round){
+		for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
+			(*it)->bet(&betinc);
 		}
-		cout << betinc << endl;
+		betinc.pay_out();
+		betinc.initialize();
 	}
-	cout << "....................... Pay out ----------------------------------" << endl;
+	cout << "------------------------------- After betting rounds -----------------------" << endl;
 
-	cout << betinc << endl;
-	betinc.pay_out();
-	for (int i=0; i<5; ++i){
-		cout << players[i] << endl;		
+	for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
+		cout << (*it) << endl;
 	}
-	cout << betinc << endl;
+
+	for (vector<Player*>::iterator it = players.begin(); it!=players.end(); ++it){
+		delete *it;
+	}	
 
 	return 0;
 }

@@ -7,3 +7,7 @@ void Legal_entity::pay(double amount){
 void Legal_entity::recieve(double amount){
 	b += amount;
 }
+
+bool Legal_entity::has(double amount){
+	return b >= amount;
+}

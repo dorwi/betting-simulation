@@ -8,6 +8,7 @@ public:
 	Legal_entity(double d): b(d) {}
 	void pay(double);
 	void recieve(double);
+	bool has(double);
 	double balance() const {return b;}
 private:
 	double b;
