@@ -2,6 +2,7 @@
 
 #include "player.h"
 #include "bettingcompany.h"
+#include "customrandom.h"
 #include <iostream>
 
 using std::ostream;
@@ -14,8 +15,11 @@ void Player::recieve(double amount){
 	}
 }
 
-void Player::bet(Betting_company*){
-
+void Player::bet(Betting_company* bc){
+	double amount = 1.0;
+	int k = Custom_random::get_random(bc->n_dogs);
+	bc->recieve_bet(k, amount, this);
+	balance -= amount;
 }
 
 
