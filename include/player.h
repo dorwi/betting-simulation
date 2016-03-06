@@ -4,13 +4,18 @@
 #include <vector>
 #include "bettingcompany.h"
 
+class Betting_company;
+
 class Player {
+	friend 	std::ostream& operator<<(std::ostream&, const Player&);
 public:
-	Player(): balance(100) {}
-	void recieve(int);
+	explicit Player(int i): id(i), balance(100) {}
+	void recieve(double);
 	void bet(Betting_company*);
+	void pay(Betting_company*,double);
 private:
-	int balance;
+	int id;
+	double balance;
 };
 
 #endif

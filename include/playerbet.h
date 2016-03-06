@@ -1,10 +1,21 @@
+#ifndef GUARD__playerbet_h
+#define GUARD__playerbet_h
+
 #include "player.h"
+#include <vector>
 
 class Player;
 
-struct Player_bet{
+class Player_bet{
+public:
+	Player_bet(Player* p, int d, double a, std::vector<double>& o)
+		: player(p), dog(d), amount(a), odds(o) {}
+private:
 	Player* player;
 	int dog;
-	int amount;
-	double odds; //at the time of the bet
+	double amount;
+	std::vector<double> odds; //at the time of the bet
 };
+
+
+#endif

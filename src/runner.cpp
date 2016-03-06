@@ -1,14 +1,30 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-#include "customrandom.h"
+#include <vector>
 
+#include "customrandom.h"
+#include "player.h"
+#include "bettingcompany.h"
 
 using std::cout; using std::endl;
+using std::vector;
 
 int main(){
-	std::srand(std::time(0));
-	cout << "Who let the dogs out?" << endl;
-	cout << Custom_random::get_random(5) << endl;
+	cout << "Initializing" << endl;
+
+	vector<Player> players;
+	for(int i=0; i<100; ++i){
+		Player p(i);
+		players.push_back(p);
+	}
+	Betting_company betinc;
+
+	for (vector<Player>::iterator it = players.begin(); it!=players.end(); ++it){
+		it->pay(&betinc, 1.0);
+	}
+
+	cout << betinc << endl;
+	cout << players[0] << endl;
 	return 0;
 }
