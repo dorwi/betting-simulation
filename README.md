@@ -16,10 +16,22 @@ The betting will cosist of n rounds
 
 
 
-## To Do
+There are 4 types of player (they form the diamond of death problem):
 
-1. Have different players, with different betting styles
-2. Premium and non-premium players
+1. Ordinary
+2. Agressive, who bets twice the amount as an ordinary
+3. VIP doesn't have to pay for participation, and bets as an ordinary player
+4. Agressive VIP player, bets as an agressive and don't pay for participation
+
+
+
+Touched concepts:
+
+1. Inheritance
+2. Multiple inheritance
+3. Diamond of death
+4. Virtual destructor
+5. Virtual inheritance
 
 
 p.s. I don't care about dog races.
