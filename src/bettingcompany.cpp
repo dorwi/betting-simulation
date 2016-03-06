@@ -22,10 +22,6 @@ void Betting_company::recieve_bet(int dog, double amount, Player* p){
 	all_bets.push_back(pb);
 }
 	
-void Betting_company::recieve(double amount){
-	balance += amount;
-}
-
 
 void Betting_company::initialize(){
 	probs.clear();
@@ -51,12 +47,9 @@ void Betting_company::pay_out(){
 	}
 }
 
-void Betting_company::pay(double amount){
-	balance -= amount;
-}
 
 ostream& operator<<(ostream& os, const Betting_company& bc){
-	os << "Betting Company Balance: " << bc.balance << "\nOdds ";
+	os << "Betting Company Balance: " << bc.balance() << "\nOdds ";
 	for (int i=0; i<bc.n_dogs; ++i){
 		os << bc.odds[i] << "\t";	
 	} 
