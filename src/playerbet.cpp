@@ -2,7 +2,7 @@
 #include "bettingcompany.h"
 
 void Player_bet::process(Betting_company& bc){
-	double worth = amount * odds[dog];
+	double worth = amount * odds;
 	bc.pay(worth);
 	player->recieve(worth); 
 }

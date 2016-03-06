@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include <map>
 #include "player.h"
 #include "playerbet.h"
 
@@ -14,6 +15,7 @@ class Betting_company {
 public:
 	Betting_company(): balance(0) { initialize(); }
 	const int n_dogs = 5;
+	const double total_start = 20.0;
 	void recieve_bet(int, double, Player*);
 	void recieve(double);
 	void pay(double);
@@ -23,7 +25,9 @@ private:
 	std::vector<double> probs;
 	std::vector<Player_bet> all_bets;
 	std::vector<double> odds;
-	double balance; 
+	std::map<int, double> total_bets;
+	double balance;
+	double total_sum;
 };
 
 #endif

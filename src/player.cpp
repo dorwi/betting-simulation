@@ -16,7 +16,7 @@ void Player::recieve(double amount){
 }
 
 void Player::bet(Betting_company* bc){
-	double amount = 1.0;
+	double amount = Custom_random::get_random_double(1.0, 5.0);
 	int k = Custom_random::get_random(bc->n_dogs);
 	bc->recieve_bet(k, amount, this);
 	balance -= amount;

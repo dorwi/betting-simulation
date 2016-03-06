@@ -16,3 +16,13 @@ int Custom_random::get_random(int k){
 
 	return r;
 }
+
+
+double Custom_random::get_random_double(double a, double b){
+	int r = rand();
+	return a + (b-a)*r/RAND_MAX;
+}
+
+double Custom_random::get_random_double(double a){
+	return Custom_random::get_random_double(0,a);
+}

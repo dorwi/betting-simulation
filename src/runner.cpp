@@ -33,20 +33,16 @@ int main(){
 		for (vector<Player>::iterator it = players.begin(); it!=players.end(); ++it){
 			it->bet(&betinc);
 		}
-		betinc.pay_out();
-		betinc.initialize();
+		cout << betinc << endl;
 	}
-
-	cout << betinc << endl;
-	cout << players[0] << endl;
-
 	cout << "....................... Pay out ----------------------------------" << endl;
 
-	betinc.pay_out();
 	cout << betinc << endl;
+	betinc.pay_out();
 	for (int i=0; i<5; ++i){
 		cout << players[i] << endl;		
 	}
+	cout << betinc << endl;
 
 	return 0;
 }
